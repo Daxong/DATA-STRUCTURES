@@ -40,6 +40,35 @@ List *Create()
     return head;
 }
 
+/*插入insert*/
+void Insert(List *&head)//这里的形参是什么 又是* 又是& 
+{
+    //在下面编写插入代码
+    List *node =NULL;//一个指针变量
+    node = new List;//新建一个节点
+    cin>> node->num;//将输入的值赋给node节点的num
+    node->next =NULL;//node节点的next指向为NULL
+    List *q,*p;
+    if(node->num<=head->num){
+        node->next=head;
+        head=node;
+        return;
+    }
+    p=head;
+    q=head->next;
+    while(q!=NULL){
+        if(node->num > q->num){
+            p=q;
+            q=q->next;
+        }else{
+            break;
+        }
+    }
+    p->next =node;
+    node->next=q;
+    return ;
+}
+
 void displayList(List *head)
 {
     while ( head != NULL ) {

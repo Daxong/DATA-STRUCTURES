@@ -68,6 +68,34 @@ void Insert(List *&head)//这里的形参是什么 又是* 又是&
     node->next=q;
     return ;
 }
+/*删除操作*/
+void deleteNode(List *&head)
+{
+    
+    int num;
+    cin>>num;
+    List *p=NULL,*q=NULL;
+    p=head;
+    if(p->num==num){
+        head = p->next;
+        delete p;
+        return;
+    }
+    q=p->next;
+    while(q!=NULL){
+        if(q->num==num){
+            p->next=q->next;
+            delete q;
+            return;
+        }
+        if(q->num>num){
+            return;
+        }
+        p = q;
+        q = q->next;
+    }
+    return ;
+}
 
 void displayList(List *head)
 {
